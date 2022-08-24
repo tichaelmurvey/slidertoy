@@ -1,0 +1,18 @@
+.preview {
+    display: block;
+    background-color: blue;
+    min-height: 24px;
+    margin: 5px 0;
+}
+
+.color {
+    width: min-content;
+    margin: 12px;
+    border: 2px  solid grey;
+    padding: 12px;
+}
+
+.colors {
+    display: flex;
+    justify-content: center;
+}
