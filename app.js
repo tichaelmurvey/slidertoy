@@ -9,10 +9,19 @@ $(document).ready(function(){
     $(".lch-input").on("input", function(){
         updateColorFromLCH($(this).parent());
     });
+    //Listen for changes in slider input
+    $(".slider").on("input", function(){
+        $(this).prev().val($(this).val());
+        updateColorFromLCH($(this).parent());
+    });
+    //Listen for changes in ratio
+    $("#ratio").on("input", function(){
+        checkCompliance();
+    });
     //Set default values
-    $("#color-one-input").val("255, 0, 0");
-    $("#color-two-input").val("0, 255, 0");
-    $("#color-three-input").val("0, 0, 255");
+    $("#color-one-input").val("0, 131, 119");
+    $("#color-two-input").val("255, 255, 255");
+    $("#color-three-input").val("0, 0, 0");
     updateColorFromRGB($("#color-one-input").val(), $("#color-one-input").parent());
     updateColorFromRGB($("#color-two-input").val(), $("#color-two-input").parent());
     updateColorFromRGB($("#color-three-input").val(), $("#color-three-input").parent());
@@ -48,8 +57,11 @@ function updateColorFromLCH(container){
     container.find(".preview").css({"background-color": "rgb("+new_color.rgb()+")"});
     //Update RGB fields
     container.find(".rgb-input").val(new_color.rgb());
+    container.find(".slider.lightness").val(lch_values[0]);
+    container.find(".slider.chroma").val(lch_values[1]);
+    container.find(".slider.hue").val(lch_values[2]);
     updateLuminance(new_color, container);
-    checkCompliance()
+    checkCompliance();
 }
 
 function updateLuminance(new_color, container){
