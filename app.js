@@ -80,7 +80,7 @@ function checkCompliance(){
                 if(ratio < $("#ratio").val()){
                     console.log("error on color " + index + " against color " + i);
                     console.log($(this));
-                    $(this).find(".error").append("<p>Not compliant with color " + (i+1) + ". Ratio of " + ratio + ".</p>");
+                    $(this).find(".error").append("<p>Not compliant with color " + (i+1) + ". Ratio of " + Math.round(ratio*100)/100 + ".</p>");
                 }
             }
         }
